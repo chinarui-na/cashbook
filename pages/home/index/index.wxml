@@ -1,0 +1,43 @@
+<wux-toast id="wux-toast" />
+<cu-custom bgColor="bg-main">
+    <view slot="content"></view>
+</cu-custom>
+<view style="width:100%;position:fixed; top:{{height}};" id="panel">
+    <view class="bg-main padding-left" style="height:250rpx">
+        <view class="fontbebfd2 text-sm">本月结余（元）</view>
+        <view class="text-sl">¥{{aviable}}</view>
+        <view class="fontbebfd2 text-sm margin-top-lg">
+            <text>本月收入 </text><text class="text-white">{{income}}</text>
+            <text style="margin-left:80rpx;">本月支出 </text><text class="text-white">{{pay}}</text>
+        </view>
+    </view>
+    <wux-notice-bar loop="false" mode="closable" id="noticeBar" bind:click="closeNoticeBar">
+        点击右上角添加到我的小程序更方便
+    </wux-notice-bar>
+    <scroll-view scroll-y class="text-lred" style="height:{{scrollHeight}}px">
+        <block wx:for="{{moneyRecord}}" wx:for-index="idx" wx:for-item="item" wx:key="moneyRecord">
+            <view class="time-color">
+                <view class="flex  padding-lr padding-tb-xs justify-between">
+                    <view class="radius">{{item.time}}</view>
+                    <view class="radius">收入:{{item.income}} 支出:{{item.pay}}</view>
+                </view>
+            </view>
+            <view class="cu-list menu-avatar">
+                <block wx:for="{{item.list}}" wx:for-index="lidx" wx:for-item="litem" wx:key="moneyList">
+                    <view class="cu-item border-bottom" style="height:120rpx">
+                        <view class="cu-avatar round lg " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{lidx+1}}.jpg);"></view>
+                        <view class="content">
+                            <view class="text-black text-df">{{litem.type}}</view>
+                            <view class="text-gray text-xs desc" wx:if="{{litem.note.length > 0}}">
+                                <text class="cuIcon-infofill text-red"></text>{{litem.note}}
+                            </view>
+                        </view>
+                        <view class="action">
+                            <view class="text-lg {{litem.payOrIncome === 0 ?'text-lred':'text-green'}}">¥{{litem.money}}</view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </block>
+    </scroll-view>
+</view>

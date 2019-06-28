@@ -1,0 +1,62 @@
+<cu-custom bgColor="bg-main" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">添加账目</view>
+</cu-custom>
+<wux-toast id="wux-toast" />
+<view class="margin-top"></view>
+<wux-segmented-control theme="main" values="{{ ['支出', '收入'] }}" bind:change="onChange" />
+<view class="time-color solid-bottom">
+    <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
+        <view class="radius">请输入金额</view>
+    </view>
+</view>
+<view class="solid-bottom padding-left">
+    <input class="text-sl" style="min-height:100rpx" type="digit" value="{{money}}" bindinput="moneyInput" placeholder="0.00"></input>
+</view>
+<view class="time-color solid-bottom">
+    <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
+        <view class="radius">请选择分类</view>
+    </view>
+</view>
+<scroll-view scroll-x class="scroll-x">
+    <view wx:for="{{key == 0 ? payList : incomeList}}" wx:for-index="index" wx:for-item="item" wx:key="noticeId" class="view-parent">
+        <block wx:if="{{item.viable}}">
+            <button class="cu-btn round bg-lred margin-tb-xs margin-left-xs">{{item.value}}</button>
+        </block>
+        <block wx:else>
+            <button class="cu-btn round line-grey text-black margin-tb-xs margin-left-xs"  bind:tap="chooseType" data-index="{{index}}">{{item.value}}</button>
+        </block>
+    </view>
+</scroll-view>
+<view class="time-color solid-bottom solid-top">
+    <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
+        <view class="radius">请选择时间</view>
+    </view>
+</view>
+<view style="min-height:60rpx" class="solid-bottom">
+    <picker mode="date" value="{{date}}" class="margin-left-sm" start="2015-09-01" end="2050-05-05" bindchange="bindDateChange">
+        <view class="picker padding-sm">
+            {{moneyObj.time}}
+        </view>
+    </picker>
+</view>
+<view class="time-color solid-bottom solid-top">
+    <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
+        <view class="radius">备注</view>
+    </view>
+</view>
+<view class="cu-form-group solid-bottom">
+    <textarea maxlength="-1" bindinput="noteInput" value='{{moneyObj.note}}' placeholder="请输入备注"></textarea>
+</view>
+<view class="flex margin-lr margin-top">
+    <view class="flex-sub  radius">
+        <view class="padding-xs flex flex-direction">
+            <button class="cu-btn line-grey text-black lg" bind:tap="againRecord">再记一笔</button>
+        </view>
+    </view>
+    <view class="flex-sub  radius">
+        <view class="padding-xs flex flex-direction">
+            <button class="cu-btn bg-lred text-white lg" bindtap="save">保存</button>
+        </view>
+    </view>
+</view>

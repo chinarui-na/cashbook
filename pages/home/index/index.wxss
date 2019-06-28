@@ -1,0 +1,34 @@
+.fontbebfd2 {
+    color: #bebfd2
+}
+
+.border-bottom {
+    background: #bcdc9d;
+}
+
+.border-bottom:after {
+    content: '';
+    position: absolute;
+    left: 150rpx;
+    top: -10rpx;
+    bottom: 0;
+    right: auto;
+    height: 1rpx;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+.time-color{
+	background-color: #f8f9fb;
+	color:#97989a;
+}
+
+.desc {
+    font-size: 25rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

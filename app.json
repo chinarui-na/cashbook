@@ -1,0 +1,25 @@
+{
+    "pages": [
+                "pages/index/index",
+
+        "pages/authorize/authorize",
+        "pages/home/addMoneyNote/addMoneyNote",
+        "pages/home/index/index",
+        "pages/my/index/index"
+    ],
+    "window":
+    {
+        "navigationStyle": "custom"
+    },
+    "usingComponents":
+    {
+        "cu-custom": "./colorui/components/cu-custom",
+        "wux-vcode": "./static/wux/vcode/index",
+        "wux-toast": "./static/wux/toast/index",
+        "wux-prompt": "./static/wux/prompt/index",
+        "wux-notice-bar": "./static/wux/notice-bar/index",
+        "wux-segmented-control": "./static/wux/segmented-control/index"
+
+    },
+    "sitemapLocation": "sitemap.json"
+}

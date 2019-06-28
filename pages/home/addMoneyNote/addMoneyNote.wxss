@@ -1,0 +1,25 @@
+.border-line{
+	border:1px solid #2a2b4e
+}
+page{
+	background-color: #fff
+}
+.time-color{
+	background-color: #f8f9fb;
+	color:#97989a;
+}
+
+.scroll-x{
+    /*height:80px;*/
+    white-space:nowrap;
+    display:flex;
+}
+/* 隐藏scrollbar */
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.view-parent{
+    display:inline-block;
+}

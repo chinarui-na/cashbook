@@ -1,0 +1,21 @@
+
+<wux-toast id="wux-toast"/>
+
+<home wx:if="{{currentTab=='home'}}" tabbarHeight="{{tabbarHeight}}"></home>
+<my  wx:if="{{currentTab=='my'}}"></my>
+
+<view class="cu-bar tabbar  bg-white foot" style="max-height:100rpx">
+    <view class="action {{currentTab=='home'?'text-lred':'text-gray'}}" bindtap='navChange' data-cur="home">
+      <view class="icon-task"></view>详情
+    </view>
+    <view class="action {{currentTab=='1'?'text-lred':'text-gray'}} add-action" bind:tap="addMoneyNote">
+      <button class="cu-btn icon-add bg-lred shadow"></button>
+      记一笔
+    </view>
+    <view class="action {{currentTab=='my'?'text-lred':'text-gray'}}" bindtap='navChange' data-cur="my">
+      <view class="icon-people">
+      </view>
+      我的
+    </view>
+</view>
+

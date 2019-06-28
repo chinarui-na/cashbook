@@ -1,0 +1,26 @@
+/**app.wxss**/
+@import "colorui/main.wxss";
+/*@import "colorui/icon.wxss";*/
+@import "colorui/myicon.wxss";
+
+.divLine{
+ background: #eeeeee;
+ width: 100%;
+ height: 3rpx;
+}
+
+.myredio {
+    transform: scale(0.7);
+}
+
+.fontbebfd2{
+	color: #bebfd2
+}
+.inline-center{
+	position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);
+}
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
