@@ -1,3 +1,4 @@
+const  app = getApp()
 Component({
   options: {
     addGlobalClass: true,
@@ -37,6 +38,9 @@ Component({
     wx.hideLoading()
   },
   methods: {
+    showCharts(){
+      app.showTextToast('敬请期待')
+    },
     coutNum(e) {
       if (e > 1000 && e < 10000) {
         e = (e / 1000).toFixed(1) + 'k'
@@ -69,8 +73,8 @@ Component({
     },
     showQrcode() {
       wx.previewImage({
-        urls: ['https://image.weilanwl.com/color2.0/zanCode.jpg'],
-        current: 'https://image.weilanwl.com/color2.0/zanCode.jpg' // 当前显示图片的http链接      
+        urls: ['http://img.chinarui.cn/pay4me.jpg'],
+        current: 'http://img.chinarui.cn/pay4me.jpg' // 当前显示图片的http链接      
       })
     },
   }

@@ -13,34 +13,33 @@
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
       <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
-        <text class="cuIcon-github text-grey"></text>
+        <text class="icon-cashbook text-grey"></text>
         <text class="text-grey">我的账本</text>
       </view>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about/about" hover-class="none">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="icon-clock text-orange"></text>
         <text class="text-grey">定时提醒</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
-        <text class="cuIcon-formfill text-green"></text>
+    <view class="cu-item arrow" bind:tap="showCharts">
+        <text class="icon-charts text-green"></text>
         <text class="text-grey">账目报表</text>
-      </navigator>
     </view>
     <view class="cu-item arrow">
       <view class="content" bindtap="showQrcode">
-        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="icon-damuzhi text-red"></text>
         <text class="text-grey">赞赏支持</text>
       </view>
     </view>
     <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
-        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="icon-view text-grey"></text>
         <text class="text-grey">意见反馈</text>
       </button>
     </view>
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>
+<wux-toast id="wux-toast" />
