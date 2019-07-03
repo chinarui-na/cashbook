@@ -1,4 +1,5 @@
 const app = getApp();
+var store = require('../../utils/store.js');
 Page({
     data: {
         //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -26,7 +27,7 @@ Page({
             wx.login({
                 success(res) {
                     if (res.code) {
-                        app.get('http://172.16.3.244:8128/conf/rest/wechat/login/' + res.code).then(res => {
+                        app.get(store.state.server + '/conf/rest/wechat/login/' + res.code).then(res => {
                             console.log(res)
                             var data = res.data
                             if (data.returnCode == 1){

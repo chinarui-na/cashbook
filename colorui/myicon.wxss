@@ -50,6 +50,9 @@ button[class*="icon-"] {
 }
 */
 
+.icon-calendar:before{
+  content: "\e60d"
+}
 .icon-damuzhi:before {
   content: "\e669";
 }

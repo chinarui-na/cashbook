@@ -1,45 +1,46 @@
 <scroll-view scroll-y class="scrollPage">
-  <view class="UCenter-bg">
-    <image src="/images/logo.png" class="png" mode="widthFix"></image>
-    <view class="text-xl">高效记账
-      <text class="text-df">v2.0</text>
+    <view class="UCenter-bg">
+        
+        <view class="text-xxl">高效记账
+            <text class="text-df">v1.0</text>
+        </view>
+        <view class="margin-top-sm">
+            <text>By:chinarui</text>
+        </view>
+        <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
     </view>
-    <view class="margin-top-sm">
-      <text>By:chinarui</text>
+    <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+      <view class="cu-item arrow">
+            <view class="content" bind:tap="timeline">
+                <text class="icon-cashbook text-grey"></text>
+                <text class="text-grey">我的账本</text>
+            </view>
+        </view>
+        <view class="cu-item arrow">
+             <view class="content"  bind:tap="fixTime">
+                <text class="icon-clock text-orange"></text>
+                <text class="text-grey">定时提醒</text>
+           </view>
+        </view>
+        <view class="cu-item arrow" bind:tap="showCharts">
+            <view class="content">
+                <text class="icon-charts text-green"></text>
+                <text class="text-grey">账目报表</text>
+            </view>
+        </view>
+        <view class="cu-item arrow">
+            <view class="content" bindtap="showQrcode">
+                <text class="icon-damuzhi text-red"></text>
+                <text class="text-grey">赞赏支持</text>
+            </view>
+        </view>
+        <view class="cu-item arrow">
+            <button class="cu-btn content" open-type="feedback">
+                <text class="icon-view text-grey"></text>
+                <text class="text-grey">意见反馈</text>
+            </button>
+        </view>
     </view>
-    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
-  </view>
-  
-  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
-        <text class="icon-cashbook text-grey"></text>
-        <text class="text-grey">我的账本</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/about/about" hover-class="none">
-        <text class="icon-clock text-orange"></text>
-        <text class="text-grey">定时提醒</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow" bind:tap="showCharts">
-        <text class="icon-charts text-green"></text>
-        <text class="text-grey">账目报表</text>
-    </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="showQrcode">
-        <text class="icon-damuzhi text-red"></text>
-        <text class="text-grey">赞赏支持</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <button class="cu-btn content" open-type="feedback">
-        <text class="icon-view text-grey"></text>
-        <text class="text-grey">意见反馈</text>
-      </button>
-    </view>
-  </view>
-  <view class="cu-tabbar-height"></view>
+    <view class="cu-tabbar-height"></view>
 </scroll-view>
 <wux-toast id="wux-toast" />

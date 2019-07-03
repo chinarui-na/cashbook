@@ -1,7 +1,9 @@
 // store.js
 const state = {
   userId: 'qqq',
-  server:'http://192.168.0.104:8128',
+  // server:'http://192.168.0.104:8128',
+  // server:'http://172.16.3.205:8128',
+  server:'https://interface.chinarui.cn/cashbook',
   ip:'http://172.16.2.229',
   port:'8180',
   HTTP: 'http://172.16.2.229:8180'

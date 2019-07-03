@@ -1,4 +1,5 @@
 const app = getApp()
+var store = require('../../../utils/store.js');
 Page({
     data: {
         TabCur: 0,
@@ -30,71 +31,110 @@ Page({
         ],
         paySelectIndex: 0,
         incomeSelectIndex: 0,
-        money:'',
+        money: '',
+        defaultCurrent: 0,
         moneyObj: {
             'payOrIncome': 0, //0 支出 1 收入
             'type': '吃喝',
             'money': 0,
             'time': '',
             'note': '',
-            'token':''
-        }
+            'token': ''
+        },
+        type: '',
+        displayObj: {}
     },
-    againRecord(){
-      var moneyObj = this.data.moneyObj
-      var that = this
-        app.getStorage('wxtoken').then(res=>{
-          let token = res.data
-          if(token){
-            moneyObj.token = token
-              app.post(store.state.server +'/conf/rest/money/create',moneyObj).then(res=>{
-                if(res.data.returnCode == 0){
-                  moneyObj.money = 0.00
-                  moneyObj.note = ''
-                  console.log(moneyObj)
-                  that.setData({moneyObj:moneyObj,money:''})
-                  console.log(moneyObj)
-                }else{app.showTextToast('保存失败')}
-              }).catch(err=>{ app.showTextToast('保存失败') })
-          }else{app.showTextToast('保存失败')}
+    againRecord() {
+        var moneyObj = this.data.moneyObj
+        var that = this
+        app.getStorage('wxtoken').then(res => {
+            let token = res.data
+            if (token) {
+                moneyObj.token = token
+                app.post(store.state.server + '/conf/rest/money/create', moneyObj).then(res => {
+                    if (res.data.returnCode == 0) {
+                        moneyObj.money = 0.00
+                        moneyObj.note = ''
+                        console.log(moneyObj)
+                        that.setData({ moneyObj: moneyObj, money: '' })
+                        console.log(moneyObj)
+                    } else { app.showTextToast('保存失败') }
+                }).catch(err => { app.showTextToast('保存失败') })
+            } else { app.showTextToast('保存失败') }
         })
     },
     save() {
         var moneyObj = this.data.moneyObj
-        app.getStorage('wxtoken').then(res=>{
-          let token = res.data
-          if(token){
-            moneyObj.token = token
-              app.post(store.state.server + '/conf/rest/money/create',moneyObj).then(res=>{
-                console.log(res)
-                if(res.data.returnCode == 0){
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }else{app.showTextToast('保存失败')}
-              }).catch(err=>{ app.showTextToast('保存失败') })
-          }else{app.showTextToast('保存失败')}
+        app.getStorage('wxtoken').then(res => {
+            let token = res.data
+            if (token) {
+                moneyObj.token = token
+                if (moneyObj.money === 0) {
+                    app.showTextToast('金额不能为0')
+                } else {
+                    app.post(store.state.server + '/conf/rest/money/create', moneyObj).then(res => {
+                        if (res.data.returnCode == 0) {
+                            wx.navigateBack({
+                                delta: 1
+                            })
+                        } else { app.showTextToast('保存失败') }
+                    }).catch(err => { app.showTextToast('保存失败') })
+                }
+            } else { app.showTextToast('保存失败') }
+        })
+    },
+    update() {
+        var moneyObj = this.data.moneyObj
+        if (moneyObj.money === 0) {
+            app.showTextToast('金额不能为0')
+        } else {
+            app.post(store.state.server + '/conf/rest/money/update', moneyObj).then(res => {
+                if (res.data.returnCode == 0) {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                } else { app.showTextToast('保存失败') }
+            }).catch(err => { app.showTextToast('保存失败') })
+        }
+    },
+    delete() {
+        var that = this
+        wx.showModal({
+            content: '确定删除吗？',
+            success(res) {
+                if (res.confirm) {
+                    var moneyObj = that.data.moneyObj
+                    var id = moneyObj.id
+                    app.get(store.state.server + '/conf/rest/money/delete/' + id).then(res => {
+                        if (res.data.returnCode == 0) {
+                            wx.navigateBack({
+                                delta: 1
+                            })
+                        } else { app.showTextToast('删除失败') }
+                    }).catch(err => { app.showTextToast('删除失败') })
+                } else if (res.cancel) {}
+            }
         })
     },
     onChange(e) {
         var moneyObj = this.data.moneyObj
-        moneyObj.payOrIncome =  e.detail.key
-        if(e.detail.key === 0){
-          moneyObj.type = '吃喝'
-        }else{moneyObj.type = '工资'}
+        moneyObj.payOrIncome = e.detail.key
+        if (e.detail.key === 0) {
+            moneyObj.type = '吃喝'
+        } else { moneyObj.type = '工资' }
 
-        this.setData({ key: e.detail.key, moneyObj: moneyObj })
+        this.setData({ defaultCurrent: e.detail.key, moneyObj: moneyObj, defaultCurrent: e.detail.key })
     },
     chooseType(e) {
-        let key = this.data.key
+        let defaultCurrent = this.data.defaultCurrent
         var moneyObj = this.data.moneyObj
-        if (key === 0) {
+        if (defaultCurrent === 0) {
             let index = e.currentTarget.dataset.index
             var payList = this.data.payList
             payList[this.data.paySelectIndex].viable = false
             payList[index].viable = true
             moneyObj.type = payList[index].value
-            this.setData({ payList: payList, paySelectIndex: index,moneyObj:moneyObj })
+            this.setData({ payList: payList, paySelectIndex: index, moneyObj: moneyObj })
         } else {
             let index = e.currentTarget.dataset.index
             var incomeList = this.data.incomeList
@@ -112,7 +152,7 @@ Page({
     },
     noteInput(e) {
         var moneyObj = this.data.moneyObj
-        moneyObj.note = e.detail.value
+        moneyObj.note = filterEmoji(e.detail.value)
         this.setData({
             moneyObj: moneyObj
         })
@@ -133,17 +173,57 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        var that = this
         var timestamp = Date.parse(new Date());
         var date = new Date(timestamp);
         var Y = date.getFullYear();
         var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
         var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
         console.log("当前时间：" + Y + '年' + M + '月' + D + '日');
-        var moneyObj = this.data.moneyObj
+        var moneyObj = that.data.moneyObj
         moneyObj.time = Y + '-' + M + '-' + D
-        this.setData({
-            moneyObj: moneyObj
+        that.setData({
+            moneyObj: moneyObj,
+            type: options.type
         })
+        if (options.type == 'display') {
+            app.get(store.state.server + '/conf/rest/money/findById/' + options.id).then(res => {
+                if (res.data.returnCode == 0) {
+                    var nowChooseIndex = 0
+                    if (res.data.data.payOrIncome === 0) { //支出
+                        var payList = that.data.payList
+                        payList.some(function(item, index, array) {
+                            nowChooseIndex = index
+                            return item.value === res.data.data.type
+                        })
+                        payList[that.data.paySelectIndex].viable = false
+                        payList[nowChooseIndex].viable = true
+                        console.log(payList)
+                        that.setData({ payList: payList, paySelectIndex: nowChooseIndex })
+                    } else {
+                        var incomeList = that.data.incomeList
+                        var nowChooseIndex = 0
+                        incomeList.some(function(item, index, array) {
+                            nowChooseIndex = index
+                            return item.value === res.data.data.type
+                        })
+                        incomeList[that.data.incomeSelectIndex].viable = false
+                        incomeList[nowChooseIndex].viable = true
+                        that.setData({ incomeList: incomeList, incomeSelectIndex: nowChooseIndex })
+                    }
+
+                    that.setData({
+                        moneyObj: res.data.data,
+                        money: res.data.data.money,
+                        defaultCurrent: res.data.data.payOrIncome,
+                    })
+                } else { app.showTextToast('查看失败') }
+            }).catch(err => {
+                app.showTextToast('查看失败')
+                console.log(err)
+            })
+        }
+
     },
 
     /**
@@ -189,3 +269,11 @@ Page({
     }
 
 })
+
+function filterEmoji(name) {
+
+    var str = name.replace(/[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig, "");
+
+    return str;
+
+}

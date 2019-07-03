@@ -3,10 +3,20 @@
     <view slot="content"></view>
 </cu-custom>
 <view style="width:100%;position:fixed; top:{{height}};" id="panel">
-    <view class="bg-main padding-left" style="height:250rpx">
-        <view class="fontbebfd2 text-sm">本月结余（元）</view>
+    <view class="bg-main padding-left " style="height:250rpx">
+        <view class="flex justify-between">
+            <view class="fontbebfd2 text-sm text-white">本月结余（元）</view>
+            <view style="min-height:60rpx" class="text-white margin-right">
+                <picker mode="date" value="{{date}}" start="2019-06" end="2025-05" fields="month" bindchange="bindDateChange">
+                    <view class="picker">
+                        <text class="icon-calendar text-white"></text>
+                        {{date}}
+                    </view>
+                </picker>
+            </view>
+        </view>
         <view class="text-sl">¥{{aviable}}</view>
-        <view class="fontbebfd2 text-sm margin-top-lg">
+        <view class="fontbebfd2 text-sm margin-top-lg  text-white">
             <text>本月收入 </text><text class="text-white">{{income}}</text>
             <text style="margin-left:80rpx;">本月支出 </text><text class="text-white">{{pay}}</text>
         </view>
@@ -24,16 +34,16 @@
             </view>
             <view class="cu-list menu-avatar">
                 <block wx:for="{{item.list}}" wx:for-index="lidx" wx:for-item="litem" wx:key="moneyList">
-                    <view class="cu-item border-bottom" style="height:120rpx">
-                        <view class="cu-avatar round lg " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{lidx+1}}.jpg);"></view>
+                    <view class="cu-item border-bottom" style="height:120rpx" bind:tap="detail" data-index1="{{idx}}" data-index2="{{lidx}}">
+                        <view class="cu-avatar round " style="background-image:url({{litem.imgUrl}});background-color:#fff;"></view>
                         <view class="content">
-                            <view class="text-black text-df">{{litem.type}}</view>
+                            <view class="text-black text-sm">{{litem.type}}</view>
                             <view class="text-gray text-xs desc" wx:if="{{litem.note.length > 0}}">
                                 <text class="cuIcon-infofill text-red"></text>{{litem.note}}
                             </view>
                         </view>
-                        <view class="action">
-                            <view class="text-lg {{litem.payOrIncome === 0 ?'text-lred':'text-green'}}">¥{{litem.money}}</view>
+                        <view class="action" style="width:180rpx;text-align:right">
+                            <view class="text-df {{litem.payOrIncome === 0 ?'text-lred':'text-green'}}">¥{{litem.money}}</view>
                         </view>
                     </view>
                 </block>

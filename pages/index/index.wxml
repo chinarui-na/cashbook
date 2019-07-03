@@ -1,21 +1,56 @@
-
-<wux-toast id="wux-toast"/>
-
+<wux-toast id="wux-toast" />
 <home wx:if="{{currentTab=='home'}}" tabbarHeight="{{tabbarHeight}}"></home>
-<my  wx:if="{{currentTab=='my'}}"></my>
-
+<my wx:if="{{currentTab=='my'}}"></my>
 <view class="cu-bar tabbar  bg-white foot" style="max-height:100rpx">
     <view class="action {{currentTab=='home'?'text-lred':'text-gray'}}" bindtap='navChange' data-cur="home">
-      <view class="icon-task"></view>详情
+        <view class="icon-task"></view>详情
     </view>
     <view class="action {{currentTab=='1'?'text-lred':'text-gray'}} add-action" bind:tap="addMoneyNote">
-      <button class="cu-btn icon-add bg-lred shadow"></button>
-      记一笔
+        <button class="cu-btn icon-add bg-lred shadow"></button>
+        记一笔
     </view>
     <view class="action {{currentTab=='my'?'text-lred':'text-gray'}}" bindtap='navChange' data-cur="my">
-      <view class="icon-people">
-      </view>
-      我的
+        <view class="icon-people">
+        </view>
+        我的
     </view>
 </view>
-
+<view class='page-cont' wx:if="{{isTiptrue}}">
+    <view class='top'>
+        <image src='http://img.chinarui.cn/topjiantou.png'></image>
+        <view class='p_one'>添加高效记账小程序，更快捷的记账</view>
+    </view>
+    <view class='cont'>
+        <view class='cont-p'>
+            <view class='text'><text>1</text></view>
+            <view>点击右上角</view>
+            <image src='http://img.chinarui.cn/sangedian.jpg'></image>
+        </view>
+        <view class='cont-p'>
+            <view class='text'><text>2</text></view>
+            <view>点击“添加我的小程序”</view>
+        </view>
+        <view class='cont-p'>
+            <view class='text'><text>3</text></view>
+            <view>回到微信首页下拉聊天列表，</view>
+        </view>
+        <view class='cont-p-lib'>
+            <view class='text' style='opacity:0;'><text>3</text></view>
+            <view>从“我的小程序”里打开“高效记账”</view>
+        </view>
+        <view class='cont-p-three'>
+            <image src='http://img.chinarui.cn/youjiantou.png'></image>
+            <view class='right'>
+                <view class='left-p'>
+                    <view class='title'>我的小程序</view>
+                    <image src='http://img.chinarui.cn/cashbook_logo.jpg'></image>高效记账
+                </view>
+                <view class='left-p'>
+                    <view class='title' style='opacity:0;'>我的小程序</view>
+                    <view style='color:#4C4C4E;width:27px;height:27px;border-radius:50%;background:#4C4C4E;'></view>小程序
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='bottom' bindtap='closeThis'>记住了 我去试试</view>
+</view>

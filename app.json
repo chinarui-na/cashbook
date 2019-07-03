@@ -1,11 +1,13 @@
 {
     "pages": [
-                "pages/index/index",
-
+        "pages/index/index",
         "pages/authorize/authorize",
         "pages/home/addMoneyNote/addMoneyNote",
         "pages/home/index/index",
-        "pages/my/index/index"
+        "pages/my/index/index",
+        "pages/my/timeline/timeline",
+        "pages/my/charts/charts"
+
     ],
     "window":
     {

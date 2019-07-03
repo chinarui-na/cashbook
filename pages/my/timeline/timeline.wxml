@@ -1,0 +1,14 @@
+<cu-custom bgColor="bg-main" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">我的账本</view>
+</cu-custom>
+<block wx:for="{{moneyRecord}}" wx:for-index="idx" wx:for-item="item" wx:key="*this">
+    <view class="cu-timeline">
+        <view class="cu-time text-cyan">{{item.time}}</view>
+        <view class="cu-item   icon-notice">
+            <view class="content  text-df">
+                支出:{{item.pay}}     收入:{{item.income}}
+            </view>
+        </view>
+    </view>
+</block>

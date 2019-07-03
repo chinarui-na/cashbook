@@ -32,3 +32,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.cu-list.menu-avatar>.cu-item .content {
+  position: absolute;
+  left: 146rpx;
+  width: calc(100% - 96rpx - 130rpx - 120rpx - 20rpx);
+  line-height: 1.6em;
+}

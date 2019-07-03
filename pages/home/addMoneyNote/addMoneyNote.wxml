@@ -4,14 +4,14 @@
 </cu-custom>
 <wux-toast id="wux-toast" />
 <view class="margin-top"></view>
-<wux-segmented-control theme="main" values="{{ ['支出', '收入'] }}" bind:change="onChange" />
+<wux-segmented-control theme="main" values="{{ ['支出', '收入'] }}" controlled current="{{defaultCurrent}}" bind:change="onChange" />
 <view class="time-color solid-bottom">
     <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
         <view class="radius">请输入金额</view>
     </view>
 </view>
 <view class="solid-bottom padding-left">
-    <input class="text-sl" style="min-height:100rpx" type="digit" value="{{money}}" bindinput="moneyInput" placeholder="0.00"></input>
+    <input class="text-sl" style="min-height:100rpx" maxlength="10" type="digit" value="{{money}}" bindinput="moneyInput" placeholder="0.00"></input>
 </view>
 <view class="time-color solid-bottom">
     <view class="flex padding-lr padding-tb-xs  text-sm justify-between">
@@ -19,7 +19,7 @@
     </view>
 </view>
 <scroll-view scroll-x class="scroll-x">
-    <view wx:for="{{key == 0 ? payList : incomeList}}" wx:for-index="index" wx:for-item="item" wx:key="noticeId" class="view-parent">
+    <view wx:for="{{defaultCurrent == 0 ? payList : incomeList}}" wx:for-index="index" wx:for-item="item" wx:key="noticeId" class="view-parent">
         <block wx:if="{{item.viable}}">
             <button class="cu-btn round bg-lred margin-tb-xs margin-left-xs">{{item.value}}</button>
         </block>
@@ -48,7 +48,8 @@
 <view class="cu-form-group solid-bottom">
     <textarea maxlength="-1" bindinput="noteInput" value='{{moneyObj.note}}' placeholder="请输入备注"></textarea>
 </view>
-<view class="flex margin-lr margin-top">
+
+<view class="flex margin-lr margin-top" wx:if="{{type=='add'}}">
     <view class="flex-sub  radius">
         <view class="padding-xs flex flex-direction">
             <button class="cu-btn line-grey text-black lg" bind:tap="againRecord">再记一笔</button>
@@ -57,6 +58,19 @@
     <view class="flex-sub  radius">
         <view class="padding-xs flex flex-direction">
             <button class="cu-btn bg-lred text-white lg" bindtap="save">保存</button>
+        </view>
+    </view>
+</view>
+
+<view class="flex margin-lr margin-top" wx:if="{{type=='display'}}">
+    <view class="flex-sub  radius">
+        <view class="padding-xs flex flex-direction">
+            <button class="cu-btn line-grey text-black lg" bind:tap="delete">删除</button>
+        </view>
+    </view>
+    <view class="flex-sub  radius">
+        <view class="padding-xs flex flex-direction">
+            <button class="cu-btn bg-lred text-white lg" bindtap="update">保存</button>
         </view>
     </view>
 </view>

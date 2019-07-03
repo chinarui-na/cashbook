@@ -1,6 +1,6 @@
 <view wx:if="{{canIUse}}">
     <view class='header'>
-        <image src='/images/logo.png'></image>
+        <image src='/images/cashbook_logo.jpg'></image>
     </view>
 
     <view class='content'>
