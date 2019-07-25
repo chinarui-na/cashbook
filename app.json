@@ -13,6 +13,9 @@
     {
         "navigationStyle": "custom"
     },
+    "navigateToMiniProgramAppIdList":[
+        "wxb1d395a44c5bb865"
+    ],
     "usingComponents":
     {
         "cu-custom": "./colorui/components/cu-custom",

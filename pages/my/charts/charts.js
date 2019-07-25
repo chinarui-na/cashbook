@@ -125,35 +125,9 @@ Page({
             canvas.add(group);
             shape.label = group;
         }
-
-        // var data = [{
-        //     type: '饮食',
-        //     cost: 669.47,
-        //     a: '1'
-        // }, {
-        //     type: '服饰美容',
-        //     cost: 338,
-        //     a: '1'
-        // }, {
-        //     type: '健康',
-        //     cost: 118.5,
-        //     a: '1'
-        // }, {
-        //     type: '生活用品',
-        //     cost: 78.64,
-        //     a: '1'
-        // }, {
-        //     type: '其他',
-        //     cost: 14.9,
-        //     a: '1'
-        // }, {
-        //     type: '交通出行',
-        //     cost: 8.7,
-        //     a: '1'
-        // }];
         var that = this;
         var sum = 0;
-        data = data.slice(0,6)
+        // data = data.slice(0,6)
         data.map(function(obj) {
             sum += obj.cost;
         });
@@ -260,7 +234,13 @@ Page({
               '#2FC25B', 
               '#FACC14', 
               '#F04864', 
-              '#8543E0'
+              '#8543E0',
+              '#8B2323',
+              '#4B0082',
+              '#FF00FF',
+              '#707070',
+              '#8B0000',
+              '#8B1C62'
               ]).adjust('stack');
 
             chart.guide().text({

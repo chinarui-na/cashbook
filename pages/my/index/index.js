@@ -57,6 +57,19 @@ Component({
                 }
             });
         },
+        trashSort() {
+            wx.navigateToMiniProgram({
+                appId: 'wxb1d395a44c5bb865', // 要跳转的小程序的appid
+                path: 'pages/index/index', // 跳转的目标页面
+                extarData: {
+                    open: 'auth'
+                },
+                success(res) {
+                    // 打开成功  
+                }
+            })
+
+        },
         coutNum(e) {
             if (e > 1000 && e < 10000) {
                 e = (e / 1000).toFixed(1) + 'k'
@@ -96,8 +109,8 @@ Component({
             });
 
         },
-        fixTime(){
-          app.showTextToast('暂未开发')
+        fixTime() {
+            app.showTextToast('暂未开发')
         },
         showModal(e) {
             this.setData({
