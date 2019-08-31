@@ -56,8 +56,8 @@ Component({
 
                 }
             });
-        },
-        trashSort() {
+        }, 
+        trashSort() { //垃圾分类
             wx.navigateToMiniProgram({
                 appId: 'wxb1d395a44c5bb865', // 要跳转的小程序的appid
                 path: 'pages/index/index', // 跳转的目标页面
@@ -128,5 +128,11 @@ Component({
                 current: 'http://img.chinarui.cn/pay4me.jpg' // 当前显示图片的http链接      
             })
         },
+        business(){
+            wx.previewImage({ //商务合作
+                urls: ['http://img.chinarui.cn/chinarui_wechat_code.jpg'],
+                current: 'http://img.chinarui.cn/chinarui_wechat_code.jpg' // 当前显示图片的http链接      
+            })
+        }
     }
 })

@@ -44,7 +44,7 @@ Component({
                     scrollHeight = ((app.globalData.systemInfo.screenHeight - app.globalData.CustomBar) * 2 - 100 - height * 2) / 2
                     that.setData({ scrollHeight: scrollHeight, noticeBarHeight: res[1].height })
                 })
-            }, 100)
+            }, 500)
             this.setImgMap()
         },
         detached() {

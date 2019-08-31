@@ -1,6 +1,5 @@
 <scroll-view scroll-y class="scrollPage">
     <view class="UCenter-bg">
-        
         <view class="text-xxl">高效记账
             <text class="text-df">v1.0</text>
         </view>
@@ -9,24 +8,41 @@
         </view>
         <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
     </view>
+    <!-- <view class="padding-xs flex text-center text-grey bg-white shadow-warp">
+        <view class="flex flex-sub flex-direction solid-right">
+            <view class="text-xxl text-orange">111天</view>
+            <view class="margin-top-sm">
+                <text class="cuIcon-attentionfill"></text>已加入</view>
+        </view>
+        <view class="flex flex-sub flex-direction solid-right">
+            <view class="text-xxl text-blue">333笔</view>
+            <view class="margin-top-sm">
+                <text class="cuIcon-favorfill"></text>已记账</view>
+        </view>
+        <view class="flex flex-sub flex-direction">
+            <view class="text-xxl text-green">111</view>
+            <view class="margin-top-sm">
+                <text class="cuIcon-fork"></text>积分</view>
+        </view>
+    </view> -->
     <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-      <view class="cu-item arrow">
+        <view class="cu-item arrow">
             <view class="content" bind:tap="timeline">
                 <text class="icon-cashbook text-grey"></text>
                 <text class="text-grey">我的账本</text>
             </view>
         </view>
-        <view class="cu-item arrow">
-             <view class="content"  bind:tap="fixTime">
-                <text class="icon-clock text-orange"></text>
-                <text class="text-grey">定时提醒</text>
-           </view>
-        </view>
-        <view class="cu-item arrow" bind:tap="showCharts">
+         <view class="cu-item arrow" bind:tap="showCharts">
             <view class="content">
                 <text class="icon-charts text-green"></text>
                 <text class="text-grey">账目报表</text>
             </view>
+        </view>
+        <view class="cu-item arrow">
+            <button class="cu-btn content" open-type="contact">
+                <text class="icon-agent text-orange"></text>
+                <text class="text-grey">在线客服</text>
+            </button>
         </view>
         <view class="cu-item arrow">
             <view class="content" bindtap="showQrcode">
@@ -35,9 +51,9 @@
             </view>
         </view>
         <view class="cu-item arrow">
-            <view class="content" bindtap="trashSort">
-                <text class="icon-DryTrash text-orange"></text>
-                <text class="text-grey">垃圾分类</text>
+            <view class="content" bindtap="business">
+                <text class="icon-cooperation text-orange"></text>
+                <text class="text-grey">商务合作</text>
             </view>
         </view>
         <view class="cu-item arrow">
