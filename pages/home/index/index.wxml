@@ -1,7 +1,7 @@
 <wux-toast id="wux-toast" />
-<cu-custom bgColor="bg-main">
+<!-- <cu-custom bgColor="bg-main">
     <view slot="content"></view>
-</cu-custom>
+</cu-custom> -->
 <view style="width:100%;position:fixed; top:{{height}};" id="panel">
     <view class="bg-main padding-left " style="height:250rpx">
         <view class="flex justify-between">

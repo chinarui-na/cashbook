@@ -1,7 +1,7 @@
-<cu-custom bgColor="bg-main" isBack="{{true}}">
+<!-- <cu-custom bgColor="bg-main" isBack="{{true}}">
     <view slot="backText">返回</view>
     <view slot="content">添加账目</view>
-</cu-custom>
+</cu-custom> -->
 <wux-toast id="wux-toast" />
 <view class="margin-top"></view>
 <wux-segmented-control theme="main" values="{{ ['支出', '收入'] }}" controlled current="{{defaultCurrent}}" bind:change="onChange" />

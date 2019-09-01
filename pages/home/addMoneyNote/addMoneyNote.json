@@ -1,4 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText":"添加账目"
 
 }

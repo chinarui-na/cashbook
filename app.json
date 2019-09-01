@@ -11,7 +11,8 @@
     ],
     "window":
     {
-        "navigationStyle": "custom"
+        "navigationBarBackgroundColor": "#2a2b4e",
+        "navigationBarTextStyle": "white"
     },
     "navigateToMiniProgramAppIdList":[
         "wxb1d395a44c5bb865"

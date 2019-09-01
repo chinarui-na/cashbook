@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "ff-canvas": "../../../static/f2-canvas/f2-canvas"
-  }
+  },
+  "navigationBarTitleText":"报表"
 }

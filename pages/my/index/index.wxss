@@ -1,10 +1,10 @@
 .UCenter-bg {
   background-image: url(http://img.chinarui.cn/cashbook_bg.jpg);
   background-size: cover;
-  height: 550rpx;
+  height: 350rpx;
   display: flex;
   justify-content: center;
-  padding-top: 40rpx;
+  /* padding-top: 40rpx; */
   overflow: hidden;
   position: relative;
   flex-direction: column;
@@ -13,7 +13,10 @@
   font-weight: 300;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
-
+.scrollPage{
+  position: fixed;
+  top:0;
+}
 .UCenter-bg text {
   opacity: 0.8;
 }
