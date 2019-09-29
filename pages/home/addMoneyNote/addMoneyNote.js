@@ -39,10 +39,12 @@ Page({
             'money': 0,
             'time': '',
             'note': '',
-            'token': ''
+            'token': '',
+			'nickName':''
         },
         type: '',
-        displayObj: {}
+        displayObj: {},
+		nickName:''
     },
     againRecord() {
         var moneyObj = this.data.moneyObj
@@ -65,10 +67,12 @@ Page({
     },
     save() {
         var moneyObj = this.data.moneyObj
+		var nickName = this.data.nickName
         app.getStorage('wxtoken').then(res => {
             let token = res.data
             if (token) {
                 moneyObj.token = token
+				moneyObj.nickName = nickName
                 if (moneyObj.money === 0) {
                     app.showTextToast('金额不能为0')
                 } else {
@@ -173,6 +177,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+		
         var that = this
         var timestamp = Date.parse(new Date());
         var date = new Date(timestamp);
@@ -230,14 +235,21 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+		
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+		var that = this
+		wx.getUserInfo({
+		    success: function(res) {
+				that.setData({"nickName":JSON.parse(res.rawData).nickName})
+				console.log(that.data.nickName)
+		    }
+		});
+		
     },
 
     /**

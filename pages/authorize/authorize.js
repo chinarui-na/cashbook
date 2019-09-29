@@ -13,7 +13,7 @@ Page({
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function(res) {
-                            
+                            console.log(res)
                         }
                     });
                 }

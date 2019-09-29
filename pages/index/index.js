@@ -41,11 +41,12 @@ Page({
     },
     //事件处理函数
     onLoad: function(options) {
-        app.get(store.state.server + '/conf/rest/static/wechatCode').then(res=>{
-            if(res.returnCode == 0){
-                this.setData({shareImgUrl: res.data.data.cashbookShareImgUrl})
-            }
-        }).catch(err=>{})
+		
+        // app.get(store.state.server + '/conf/rest/static/wechatCode').then(res=>{
+        //     if(res.returnCode == 0){
+        //         this.setData({shareImgUrl: res.data.data.cashbookShareImgUrl})
+        //     }
+        // }).catch(err=>{})
         let firstOpen = wx.getStorageSync("loadOpen")
         if (firstOpen == undefined || firstOpen == '') { //根据缓存周期决定是否显示新手引导
             this.setData({
