@@ -14,7 +14,9 @@ Component({
         pay: 0.00,
         aviable: 0.00,
         imgMap: null,
-        date: '2019-07'
+        date: '2019-07',
+		topNum:0,
+		cangotop:false
     },
     pageLifetimes: {
         show: function() {
@@ -52,12 +54,30 @@ Component({
         },
     },
     methods: {
+		gotoTop:function(e){
+			this.setData({
+			      topNum:0
+			    });
+		},
         bindDateChange: function(e) {
             this.getMoneyData(e.detail.value)
             this.setData({
                 date: e.detail.value
             })
         },
+		// 获取滚动条当前位置
+		  scrolltoupper:function(e){
+		    console.log(e)
+		    if (e.detail.scrollTop > 100) {
+		      this.setData({
+		        cangotop: true
+		      });
+		    } else {
+		      this.setData({
+		        cangotop: false
+		      });
+		    }
+		  },
         detail(e) {
             var moneyRecord = this.data.moneyRecord
             var choose = moneyRecord[e.currentTarget.dataset.index1].list[e.currentTarget.dataset.index2]

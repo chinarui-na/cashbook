@@ -3,16 +3,46 @@
     <view slot="content">报表</view>
 </cu-custom> -->
 <!--index.wxml-->
-<view class="flex  justify-end">
-    <view class="padding-sm text-lred margin-top text-xl radius">
-        <picker mode="date" value="{{date}}" start="2019-06" end="2025-05" fields="month" bindchange="bindDateChange">
-            <view class="picker">
-                <text class="icon-calendar text-lred"></text>
-                {{date}}
-            </view>
-        </picker>
-    </view>
+<view class="cu-bar  solid-bottom">
+	<view class="action">
+		<text class="icon-titles text-orange "></text>月支出报表
+	</view>
+	<view class="margin-right">
+		<picker mode="date" value="{{date}}" start="2019-06" end="2025-05" fields="month" bindchange="bindDateChange">
+			<view class="picker">
+				<text class="icon-calendar text-lred"></text>
+				{{date}}
+			</view>
+		</picker>
+	</view>
 </view>
+<!-- <view class="flex justify-end ">
+	<view class="padding-sm text-lred margin-top text-xl radius">
+		<picker mode="date" value="{{date}}" start="2019-06" end="2025-05" fields="month" bindchange="bindDateChange">
+			<view class="picker">
+				<text class="icon-calendar text-lred"></text>
+				{{date}}
+			</view>
+		</picker>
+	</view>
+</view> -->
 <view class="container">
-    <ff-canvas id="borkenLine" ></ff-canvas>
+	<ff-canvas id="borkenLine"></ff-canvas>
+</view>
+
+<view class="cu-bar  solid-bottom">
+	<view class="action">
+		<text class="icon-titles text-orange "></text>月支出曲线
+	</view>
+	<view class="margin-right">
+		<picker mode="date" value="{{date}}" start="2019-06" end="2025-05" fields="month" bindchange="bindDateChange">
+			<view class="picker">
+				<text class="icon-calendar text-lred"></text>
+				{{date}}
+			</view>
+		</picker>
+	</view>
+</view>
+<view class="container2">
+	<ff-canvas id="mountNode"></ff-canvas>
 </view>

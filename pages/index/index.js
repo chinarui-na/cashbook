@@ -41,7 +41,6 @@ Page({
     },
     //事件处理函数
     onLoad: function(options) {
-		
         // app.get(store.state.server + '/conf/rest/static/wechatCode').then(res=>{
         //     if(res.returnCode == 0){
         //         this.setData({shareImgUrl: res.data.data.cashbookShareImgUrl})

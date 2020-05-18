@@ -24,7 +24,7 @@
     <wux-notice-bar loop="false" mode="closable" id="noticeBar" bind:click="closeNoticeBar">
         点击右上角添加到我的小程序更方便
     </wux-notice-bar>
-    <scroll-view scroll-y class="text-lred" style="height:{{scrollHeight}}px">
+    <scroll-view scroll-y scroll-top='{{topNum}}' bindscroll="scrolltoupper" class="text-lred" id="mylist" style="height:{{scrollHeight}}px">
         <block wx:for="{{moneyRecord}}" wx:for-index="idx" wx:for-item="item" wx:key="moneyRecord">
             <view class="time-color">
                 <view class="flex  padding-lr padding-tb-xs justify-between">
@@ -50,4 +50,9 @@
             </view>
         </block>
     </scroll-view>
+	<view style="" class="fab" hidden='{{!cangotop}}' bindtap="gotoTop">
+		<view class="cu-avatar lg round bg-lred">
+			<text class="icon-gotop  text-white"></text>
+		</view>
+	</view>
 </view>

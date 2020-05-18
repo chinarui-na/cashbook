@@ -1,7 +1,7 @@
 <wux-toast id="wux-toast" />
 <home wx:if="{{currentTab=='home'}}" tabbarHeight="{{tabbarHeight}}"></home>
 <my wx:if="{{currentTab=='my'}}"></my>
-<view class="cu-bar tabbar  bg-white foot" style="max-height:100rpx">
+<view class="cu-bar tabbar  bg-white foot" style="max-height:140rpx">
     <view class="action {{currentTab=='home'?'text-lred':'text-gray'}}" bindtap='navChange' data-cur="home">
         <view class="icon-task"></view>详情
     </view>

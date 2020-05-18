@@ -46,7 +46,7 @@
     </view>
 </view>
 <view class="cu-form-group solid-bottom">
-    <textarea maxlength="-1" bindinput="noteInput" value='{{moneyObj.note}}' placeholder="请输入备注"></textarea>
+    <textarea maxlength="-1" bindinput="noteInput" show-confirm-bar value='{{moneyObj.note}}' placeholder="请输入备注"></textarea>
 </view>
 
 <view class="flex margin-lr margin-top" wx:if="{{type=='add'}}">

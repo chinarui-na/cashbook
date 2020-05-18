@@ -83,6 +83,8 @@ App({
         return postpromise;
     },
     onLaunch: function() {
+		var that = this;
+		
         if (wx.canIUse('getUpdateManager')) {
             const updateManager = wx.getUpdateManager()
             updateManager.onCheckForUpdate(function(res) {

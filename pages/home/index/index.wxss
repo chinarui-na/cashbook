@@ -5,7 +5,11 @@
 .border-bottom {
     background: #bcdc9d;
 }
-
+.fab {
+		position: fixed;
+		bottom: calc(120rpx + env(safe-area-inset-bottom) / 2);
+		right: 20rpx
+	}
 .border-bottom:after {
     content: '';
     position: absolute;

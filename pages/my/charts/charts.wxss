@@ -11,6 +11,9 @@
   justify-content: space-between;
   box-sizing: border-box;
 } 
+page{
+	background-color: #fff;
+}
 
 ff-canvas {
   width: 100%;
